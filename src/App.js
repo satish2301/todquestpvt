@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Home from "./components/home";
+import ScrollToTop from "./components/common/ScrollToTop";
+import { Route, Routes } from "react-router-dom";
+import BaseComponent from "./components/baseComponent";
+import { WebRoutes } from "./routes";
+import Deal from "./components/deal/deal";
+import Coupon from "./components/coupon/coupon";
+import Store from "./components/store/store";
+import Contact from "./components/contact/contact";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ScrollToTop>
+      <Routes>
+        <Route path="/" element={<BaseComponent />}>
+          <Route index element={<Home />} />
+          <Route path={WebRoutes.DEAL} element={<Deal />} />
+          <Route path={WebRoutes.COUPON} element={<Coupon />} />
+          <Route path={WebRoutes.STORE} element={<Store />} />
+          <Route path={WebRoutes.CONTACT} element={<Contact />} />
+        </Route>
+      </Routes>
+    </ScrollToTop>
   );
 }
 
